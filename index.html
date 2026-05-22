@@ -16,25 +16,28 @@
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 40px 20px 60px;
       text-align: center;
     }
 
-    .logo {
-        width: 120px;
-        margin-bottom: 20px;
+    .hero-banner {
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      border: 1px solid #1f2937;
     }
 
     .logo-row {
-        margin-top: 40px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        opacity: 0.7;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0.7;
     }
 
     .logo-row img {
-        width: 60px;
+      width: 60px;
     }
 
     h1 {
@@ -75,6 +78,11 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: 500;
+      transition: background 0.2s ease;
+    }
+
+    .button:hover {
+      background: #1d4ed8;
     }
 
     .footer {
@@ -86,13 +94,10 @@
 </head>
 
 <body>
-    <div class="container">
+  <div class="container">
 
-        <!-- LOGO -->
-        <img src="./images/logo.png" alt="Kawika Tools Logo" class="logo" />
-      
-        <h1>Kawika Tools</h1>
-        <h2>AI ops suite for small business needs</h2>
+    <!-- HERO BANNER -->
+    <img src="./images/banner-full.png" alt="Kawika Tools Banner" class="hero-banner" />
 
     <div class="card">
       <p>
@@ -115,10 +120,11 @@
     <div class="footer">
       © Kawika Tools
     </div>
+
     <div class="logo-row">
-        <img src="./images/logo.png" alt="Logo 1" />
-        <img src="./images/logo2.png" alt="Logo 2" />
-      </div>
+      <img src="./images/logo.png" alt="Logo 1" />
+      <img src="./images/logo2.png" alt="Logo 2" />
+    </div>
 
   </div>
 </body>
