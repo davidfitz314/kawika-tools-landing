@@ -419,6 +419,62 @@
       color: var(--text-main);
     }
 
+    /* FAQ Section Styles */
+    .faq-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+      background-color: rgba(13, 21, 39, 0.3);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .faq-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: left;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .faq-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .faq-card h4::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--accent-glow);
+    }
+
+    .faq-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
     /* Responsive Queries */
     @media (max-width: 968px) {
       .hero-container, .product-row, .product-row.row-reverse {
@@ -446,7 +502,7 @@
       </div>
       <nav class="main-nav">
         <a href="#features">Features</a>
-        <a href="#sovereignty">Data Sovereignty</a>
+        <a href="#faq">FAQ</a>
         <a href="https://www.linkedin.com/company/kawika-tools/" target="_blank" rel="noopener noreferrer">Community</a>
       </nav>
     </div>
@@ -581,6 +637,38 @@
       </div>
     </div>
   </section>
+
+  <!-- SYSTEM FAQ SECTION -->
+<section id="faq" class="faq-section">
+  <div class="container faq-container">
+    <div class="section-title-area">
+      <h2>Frequently Answered Mechanics</h2>
+      <p>Transparent details on architecture, data privacy, and rollout tracking for early operators.</p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-card">
+        <h4>When does full platform access open?</h4>
+        <p>Kawika Tools is currently in an active, private preview phase as we finalize our high-performance backend pipelines and fine-tune our localized LLM inference engines. Full onboarding access is slated to open in approximately 1 to 2 months. Joining our LinkedIn community ensures you receive immediate priority notice when the gate opens.</p>
+      </div>
+
+      <div class="faq-card">
+        <h4>How does the data sovereignty model work?</h4>
+        <p>Unlike standard commercial software that leaks your customer threads and private operational logs back to third-party providers for model training, Kawika Tools isolates your workflows. Your text extraction pipelines, calendar event maps, and interaction logs run inside dedicated boundaries where your data remains purely your leverage.</p>
+      </div>
+
+      <div class="faq-card">
+        <h4>What types of businesses is this optimized for?</h4>
+        <p>The entire system is intentionally streamlined for single-operator setups, specialized consultants, and nimble small-to-medium business teams who need massive operational throughput without the bloat of fragmented software subscriptions.</p>
+      </div>
+
+      <div class="faq-card">
+        <h4>Can I integrate my existing email and calendars?</h4>
+        <p>Yes. The core foundation relies on deterministic work queues that anchor directly into standard professional email threads and scheduling protocols, seamlessly bridging the gap between raw communication streams and clean task automation.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- MULTI-COLUMN ANCHOR FOOTER -->
   <footer class="site-footer">
