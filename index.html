@@ -3,176 +3,619 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kawika Tools</title>
+  <title>Kawika Tools | Sovereign AI Ops Suite for Small Businesses</title>
 
   <style>
-    body {
+    /* Core Custom Properties & Reset */
+    :root {
+      --bg-main: #060b13;
+      --bg-card: #0d1527;
+      --bg-header: rgba(6, 11, 19, 0.85);
+      --border-color: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #2563eb;
+      --accent-glow: #3b82f6;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0b0f1a;
-      color: #fff;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px 60px;
-      text-align: center;
-    }
-
-    .hero-banner {
       width: 100%;
-      border-radius: 18px;
-      margin-bottom: 40px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      border: 1px solid #1f2937;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .logo-row {
-      margin-top: 40px;
+    /* Navigation Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--bg-header);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-container {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      opacity: 0.7;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
     }
 
-    .logo-row img {
-      width: 60px;
-    }
-
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-weight: 400;
-      color: #9ca3af;
-      margin-bottom: 40px;
-    }
-
-    .card {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 12px;
-      padding: 30px;
-      margin-top: 40px;
-    }
-
-    .features {
+    .logo-area {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
-      text-align: left;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
     }
 
-    .cta {
-      margin-top: 40px;
+    .logo-avatar {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
     }
 
-    .button {
-      padding: 12px 20px;
-      background: #2563eb;
-      color: white;
+    .accent-text {
+      color: var(--accent-glow);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .main-nav a {
+      color: var(--text-muted);
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background 0.2s ease;
+      font-size: 14px;
+      transition: color 0.2s ease;
     }
 
-    .button:hover {
-      background: #1d4ed8;
+    .main-nav a:hover {
+      color: var(--text-main);
     }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 12px;
-      color: #6b7280;
+    /* Hero Section */
+    .hero-section {
+      padding: 80px 0 60px 0;
     }
 
-    .cta {
-      margin-top: 40px;
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(37, 99, 235, 0.15);
+      color: var(--accent-glow);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 42px;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* Premium LinkIn CTA Buttons */
+    .cta-group {
       display: flex;
-      justify-content: center;
       gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .secondary-button {
-      background: #1f2937;
-      border: 1px solid #374151;
-    }
-
-    .secondary-button:hover {
-      background: #374151;
+      align-items: center;
     }
 
     .linkedin-button {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 12px;
+      padding: 12px 22px;
       background: #0A66C2;
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      font-weight: 500;
-      transition: opacity 0.2s ease;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .linkedin-button:hover {
-      opacity: 0.9;
+      opacity: 0.95;
+      transform: translateY(-1px);
     }
 
     .linkedin-button img {
       width: 18px;
       height: 18px;
     }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 12px 22px;
+      color: var(--text-main);
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #111827;
+    }
+
+    /* Live Workflow Loop (Mockup UI) */
+    .browser-mockup {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .browser-chrome {
+      background-color: #090f1c;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-chrome .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #1e293b;
+    }
+
+    .mockup-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Interactive Product Showcase Rows */
+    .features-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-title-area {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px auto;
+    }
+
+    .section-title-area h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title-area p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .product-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+
+    .product-row.row-reverse {
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .row-badge {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent-glow);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .row-text h3 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .row-text p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .row-bullets {
+      list-style: none;
+    }
+
+    .row-bullets li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .row-bullets li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--accent-glow);
+    }
+
+    /* Core Application Screenshots Grid */
+    .mini-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .mini-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .mini-img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 16px;
+    }
+
+    .mini-card h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .mini-card p {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.4;
+    }
+
+    /* Data Sovereignty Block */
+    .sovereignty-section {
+      padding: 80px 0;
+      background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .sovereignty-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .sovereignty-text h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .sovereignty-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .security-quote {
+      background-color: var(--bg-card);
+      border-left: 4px solid var(--accent-blue);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--text-main);
+      text-align: left;
+      font-size: 15px;
+    }
+
+    /* Commercial Footer Layout */
+    .site-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 60px 0 40px;
+      background-color: #030712;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .brand-col p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .footer-logos {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .footer-logos img {
+      width: 45px;
+      height: auto;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-logos img:hover {
+      opacity: 1;
+    }
+
+    .links-col h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+
+    .links-col a {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      margin-bottom: 10px;
+    }
+
+    .links-col a:hover {
+      color: var(--text-main);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 968px) {
+      .hero-container, .product-row, .product-row.row-reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .product-row.row-reverse .row-text { grid-column: auto; }
+      .product-row.row-reverse .row-visual { grid-column: auto; grid-row: auto; }
+      .cta-group, .row-bullets { justify-content: center; text-align: left; }
+      .mini-showcase-grid { grid-template-columns: 1fr; }
+      .footer-container { flex-direction: column; align-items: center; text-align: center; }
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <!-- HERO BANNER -->
-    <img src="./images/banner-full.png" alt="Kawika Tools Banner" class="hero-banner" />
+  <!-- NAVIGATION HEADER -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="logo-area">
+        <img src="./images/logo.png" alt="Kawika Tools Logo" class="logo-avatar" />
+        <span>kawika <span class="accent-text">Tools</span></span>
+      </div>
+      <nav class="main-nav">
+        <a href="#features">Features</a>
+        <a href="#sovereignty">Data Sovereignty</a>
+        <a href="https://www.linkedin.com/company/kawika-tools/" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="card">
-      <p>
-        Kawika Tools is an AI-powered operations platform designed to simplify
-        how small businesses manage communication, tasks, and workflows.
-      </p>
+  <!-- HERO ROW -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="badge">Sovereign AI Workspace</span>
+        <h1>Enterprise-Grade AI. <br><span class="gradient-text">Deployed on Your Terms.</span></h1>
+        <p>Automate incoming communications, orchestrate multi-turn workflows, and extract calendar tasks using data-secure, private AI models built specifically for small teams and solo operators.</p>
+        
+        <div class="cta-group">
+          <a href="https://www.linkedin.com/company/kawika-tools/" class="linkedin-button" target="_blank" rel="noopener noreferrer">
+            <img src="./images/linkedin-icon-custom.svg" alt="LinkedIn" />
+            Follow on LinkedIn
+          </a>
+          <a href="#features" class="btn-secondary">See Features</a>
+        </div>
+      </div>
 
-      <div class="features">
-        <div>✔ AI-assisted email workflows</div>
-        <div>✔ Task automation and tracking</div>
-        <div>✔ Lightweight operations management</div>
-        <div>✔ Built for small teams and solo operators</div>
+      <div class="hero-visual">
+        <div class="browser-mockup">
+          <div class="browser-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <!-- Real UI Workflow execution animation loop from image_d04ca2.png tree -->
+          <img src="./images/workflow1.gif" alt="Kawika Tools Platform Navigation Lifecycle" class="mockup-img">
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="cta">
-      <a href="https://www.linkedin.com/company/kawika-tools/"
-         class="linkedin-button"
-         target="_blank"
-         rel="noopener noreferrer">
-    
-        <img src="./images/linkedin-icon-custom.svg" alt="LinkedIn" />
-        Follow on LinkedIn
-    
-      </a>
+  <!-- STAGGERED APP INTERACTION SECTIONS -->
+  <section id="features" class="features-section">
+    <div class="container">
+      
+      <div class="section-title-area">
+        <h2>The Interconnected SMB Operations Center</h2>
+        <p>Stop context-switching across disjointed subscription platforms. Kawika Tools anchors your entire client management, document sync, and automation layer within a singular high-performance node.</p>
+      </div>
+
+      <!-- ROW 1: CENTRAL COMMAND & INGESTION -->
+      <div class="product-row">
+        <div class="row-text">
+          <span class="row-badge">Operational Center</span>
+          <h3>Single-Pane Workspace Oversight</h3>
+          <p>Get instant clarity into business system activities. Track recent system-analyzed incoming logs, upcoming daily appointments, due tasks, and runtime AI telemetry analytics continuously.</p>
+          <ul class="row-bullets">
+            <li>Asynchronous background task status reports.</li>
+            <li>Clean rendering pipelines built to preserve developer speed wins.</li>
+          </ul>
+        </div>
+        <div class="row-visual">
+          <div class="browser-mockup">
+            <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <img src="./images/Dashboard.png" alt="Kawika Tools Operational Dashboard UI" class="mockup-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2: AGENTIC COMPOSITION & EXTRACTION (Staggered Orientation) -->
+      <div class="product-row row-reverse">
+        <div class="row-text">
+          <span class="row-badge">Automations Node</span>
+          <h3>Contextual Email Suggestions & Task Extraction</h3>
+          <p>Eliminate manual data entry overhead. The platform processes raw email thread states to instantly identify pending operational priorities, structuring custom response suggestions and auto-staging tasks directly into your app loop.</p>
+          <ul class="row-bullets">
+            <li>Asynchronous, context-aware autocomplete engine.</li>
+            <li>One-click event-driven extraction engine parsing communication streams.</li>
+          </ul>
+        </div>
+        <div class="row-visual">
+          <div class="browser-mockup">
+            <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <img src="./images/Email.png" alt="Kawika Tools Email AI Core Interface" class="mockup-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 3: CLIENT WORKSPACE PORTALS -->
+      <div class="product-row">
+        <div class="row-text">
+          <span class="row-badge">Client Engagement</span>
+          <h3>Sovereign Portal Timelines & Predictive Activity</h3>
+          <p>Provide client transparency while tracking business growth paths. Workspace portals automatically compile interactive project timelines, mapping active uploads, messaging exchanges, and custom relationship indices.</p>
+          <ul class="row-bullets">
+            <li>Secure localized multi-client tracking trees.</li>
+            <li>AI Relationship insights surface hidden transaction and communication trends.</li>
+          </ul>
+        </div>
+        <div class="row-visual">
+          <div class="browser-mockup">
+            <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <img src="./images/Workspace Portal.png" alt="Kawika Tools Client Hub Portal Overview" class="mockup-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM FEATURE TRI-GRID (Secondary screenshots from image_d04ca2.png structure) -->
+      <div class="mini-showcase-grid">
+        <div class="mini-card">
+          <img src="./images/Calendar.png" alt="Calendar Agenda System" class="mini-img">
+          <h4>Dynamic Agenda Systems</h4>
+          <p>Integrated calendar layouts offering high-fidelity meeting density insights and scheduling balance tracking.</p>
+        </div>
+        <div class="mini-card">
+          <img src="./images/Drive.png" alt="Drive Cloud File Storage" class="mini-img">
+          <h4>Sovereign File Repositories</h4>
+          <p>Structured document hubs utilizing automated extraction parsers to generate connected context cards.</p>
+        </div>
+        <div class="mini-card">
+          <img src="./images/Tasks.png" alt="Active Task Workspace Queue" class="mini-img">
+          <h4>Deterministic Work Queues</h4>
+          <p>Contextually bound task priority layers linked explicitly to email threads and originating file chains.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DATA PRIVACY BLOCK -->
+  <section id="sovereignty" class="sovereignty-section">
+    <div class="container sovereignty-container">
+      <div class="sovereignty-text">
+        <h2>Your Data is Your Core Leverage</h2>
+        <p>Public commercial language models actively train their platforms on your sensitive consumer communication history, file documents, and intellectual logs. Kawika Tools rejects that trade-off.</p>
+        <blockquote class="security-quote">
+          "By deploying isolated localized inference engines directly on secure private server systems, we protect data privacy and maintain zero communication leaks to third parties."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- MULTI-COLUMN ANCHOR FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="brand-col">
+        <div class="logo-area">
+          <img src="./images/logo.png" alt="Kawika Tools Badge" class="logo-avatar" />
+          <span>kawika <span class="accent-text">Tools</span></span>
+        </div>
+        <p>Automate. Optimize. Grow.</p>
+        
+        <div class="footer-logos">
+          <img src="./images/logo.png" alt="Platform Logo Variant 1" />
+          <img src="./images/logo2.png" alt="Platform Logo Variant 2" />
+        </div>
+      </div>
+
+      <div class="links-col">
+        <h4>System Matrix</h4>
+        <a href="#features">Ecosystem Features</a>
+        <a href="#sovereignty">Security Architecture</a>
+      </div>
+
+      <div class="links-col">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/company/kawika-tools/" target="_blank" rel="noopener noreferrer">LinkedIn Company Page</a>
+      </div>
+
     </div>
 
-    <div class="footer">
-      © Kawika Tools
+    <div class="copyright-text">
+      &copy; 2026 Kawika Tools. Built transparently for professional operators.
     </div>
+  </footer>
 
-    <div class="logo-row">
-      <img src="./images/logo.png" alt="Logo 1" />
-      <img src="./images/logo2.png" alt="Logo 2" />
-    </div>
-
-  </div>
 </body>
 </html>
